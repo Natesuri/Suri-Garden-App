@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :plot_plants, except: %i[new edit]
   resources :plants, except: %i[new edit]
   resources :plots, except: %i[new edit]
   # RESTful routes
