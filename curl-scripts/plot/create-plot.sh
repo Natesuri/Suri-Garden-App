@@ -15,4 +15,6 @@ curl "http://localhost:4741/plots" \
     }
   }'
 
+# TOKEN= NAME="" SIZE= BRIGHTNESS="" CLIMATE="" NOTES="" sh curl-scripts/plot/create-plot.sh
+
 echo

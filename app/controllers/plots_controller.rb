@@ -15,7 +15,8 @@ class PlotsController < OpenReadController
 
   # POST /plots
   def create
-    @plot = Plot.new(plot_params)
+    # @plot = Plot.new(plot_params)
+    @plot = current_user.plots.build(plot_params)
 
     if @plot.save
       render json: @plot, status: :created, location: @plot
@@ -43,6 +44,7 @@ class PlotsController < OpenReadController
   # Use callbacks to share common setup or constraints between actions.
   def set_plot
     @plot = Plot.find(params[:id])
+    # @plot = current_user.plots.find(params[:id])
   end
 
   # Only allow a trusted parameter "white list" through.
