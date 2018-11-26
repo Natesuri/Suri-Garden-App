@@ -1,3 +1,4 @@
 class PlotSerializer < ActiveModel::Serializer
-  attributes :id, :name, :size, :brightness, :climate, :notes, :user_id
+  attributes :id, :name, :size, :brightness, :climate, :notes
+  has_one :user
 end
