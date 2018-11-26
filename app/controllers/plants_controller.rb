@@ -47,6 +47,6 @@ class PlantsController < OpenReadController
 
   # Only allow a trusted parameter "white list" through.
   def plant_params
-    params.require(:plant).permit(:name, :type, :size, :care_instructions, :water_frequency, :harvest_frequency, :ideal_climate, :ideal_brightness, :impossible_climate, :impossible_brightness)
+    params.require(:plant).permit(:name, :plant_type, :care_instructions, :ideal_brightness)
   end
 end
