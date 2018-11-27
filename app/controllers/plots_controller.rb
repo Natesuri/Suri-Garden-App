@@ -1,9 +1,9 @@
-class PlotsController < OpenReadController
+class PlotsController < ProtectedController
   before_action :set_plot, only: %i[show update destroy]
 
   # GET /plots
   def index
-    @plots = Plot.all
+    @plots = current_user.plots.all
 
     render json: @plots
   end
@@ -43,7 +43,7 @@ class PlotsController < OpenReadController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_plot
-    @plot = Plot.find(params[:id])
+    @plot = current_user.plots.find(params[:id])
     # @plot = current_user.plots.find(params[:id])
   end
 
