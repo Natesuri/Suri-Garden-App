@@ -5,8 +5,10 @@ class PlotPlantsController < ProtectedController
 
   # GET /plot_plants
   def index
-    @plot_plants = PlotPlant.all
-    # @plot_plants = current_user.plot_plants.all
+    @plots = current_user.plots.all
+    @plot_plants = @plots.map do |plot|
+      { plot: plot, plants: plot.plants }
+    end
 
     render json: @plot_plants
   end
