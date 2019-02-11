@@ -13,7 +13,9 @@ class PlotsController < ProtectedController
 
   # GET /plots/1
   def show
-    render json: @plot
+    @plot_plant = { plot: @plot, plants: @plot.plants }
+
+    render json: @plot_plant
   end
 
   # POST /plots
