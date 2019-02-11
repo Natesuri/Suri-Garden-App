@@ -1,5 +1,5 @@
 class PlotsController < ProtectedController
-  before_action :set_plot, only: %i[show update destroy]
+  before_action :set_plot, only: %i[show update destroy add_plant]
 
   # GET /plots
   def index
@@ -39,6 +39,13 @@ class PlotsController < ProtectedController
     end
   end
 
+  def add_plant
+    @plot.plants << Plant.find(plant_params['plantId'])
+    @plot_plant = { plot: @plot, plants: @plot.plants }
+
+    render json: @plot_plant
+  end
+
   # DELETE /plots/1
   def destroy
     @plot.destroy
@@ -55,5 +62,9 @@ class PlotsController < ProtectedController
   # Only allow a trusted parameter "white list" through.
   def plot_params
     params.require(:plot).permit(:name, :size, :brightness, :climate, :notes)
+  end
+
+  def plant_params
+    params.require(:plant).permit(:plantId)
   end
 end
