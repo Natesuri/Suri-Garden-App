@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   delete '/sign-out' => 'users#signout'
   patch '/change-password' => 'users#changepw'
   patch '/plots/:id/add-plant' => 'plots#add_plant'
+  patch '/plots/:id/remove-plant' => 'plots#delete_plant'
 end

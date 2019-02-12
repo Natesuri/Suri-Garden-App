@@ -48,6 +48,11 @@ class PlotsController < ProtectedController
     render json: @plot_plant
   end
 
+  def delete_plant
+    @plot_plant = PlotPlant.find(plot_plant_params['plotPlantId'])
+    @plot_plant.destroy
+  end
+
   # DELETE /plots/1
   def destroy
     @plot.destroy
@@ -68,5 +73,9 @@ class PlotsController < ProtectedController
 
   def plant_params
     params.require(:plant).permit(:plantId)
+  end
+
+  def plot_plant_params
+    params.require(:plotPlant).permit(:plotPlantId)
   end
 end
