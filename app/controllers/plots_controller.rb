@@ -13,8 +13,10 @@ class PlotsController < ProtectedController
 
   # GET /plots/1
   def show
-    @plot_plant = { plot: @plot, plants: @plot.plants }
-
+    @plot_plant = { plot: @plot,
+                    plot_plants: @plot.plot_plants.map do |pp|
+                      { plot_plants: pp, plant: pp.plant }
+                    end }
     render json: @plot_plant
   end
 
