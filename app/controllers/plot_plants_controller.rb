@@ -6,8 +6,6 @@ class PlotPlantsController < ProtectedController
   # GET /plot_plants
   def index
     @plot_plants = PlotPlant.all
-    # @plot_plants = current_user.plot_plants.all
-
     render json: @plot_plants
   end
 
